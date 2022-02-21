@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.*;
 import java.math.*;
 
-public class Main {
+public class %{p} {
 
 	BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 	StringTokenizer tokenizer=null;
@@ -21,7 +21,7 @@ public class Main {
 	
 	public static void main(String[] args) throws IOException
 	{
-		new Main().execute();
+		new %{p}().execute();
 	}
 	
 	void debug(Object...os)
