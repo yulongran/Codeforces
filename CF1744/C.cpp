@@ -44,8 +44,34 @@ void __print(const pair<T, V> &x) {cout << '{'; __print(x.first); cout << ','; _
 template<typename T>
 void __print(const T &x) {int f = 0; cout << '{'; for (auto &i: x) cout << (f++ ? "," : ""), __print(i); cout << "}";}
 
-void solve(){
 
+void solve(){
+	int n; read(n);
+	char c; read(c);
+	string s; read(s, n);
+
+	int res = 0, i = 0;
+	char t = 'g';
+
+	while(i < n && s[i] != t) {
+		i += 1;
+	}
+	
+	int step = 0;
+
+	if(c == t) {
+		cout << res << "\n";
+		return;
+	}
+	
+	for(int j=0; j<2*n; j++){
+		if(s[i] == c) res = max(res, step);
+		if(s[i] == t) step = 0;
+		i = (i - 1 + n) % n;
+		step += 1;
+	}
+
+	cout << res << "\n";
 }
 
 int main(){
@@ -56,7 +82,7 @@ int main(){
 	int tc;
 	cin >> tc;
 	
-	for(; tc--; tc--) solve();
+	for(; tc; tc--) solve();
 
 	return 0;
 }
