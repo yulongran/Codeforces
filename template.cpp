@@ -56,7 +56,7 @@ int main(){
 	int tc;
 	cin >> tc;
 	
-	for(; tc--; tc--) solve();
+	for(; tc; tc--) solve();
 
 	return 0;
 }
