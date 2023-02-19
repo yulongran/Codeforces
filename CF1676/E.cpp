@@ -45,6 +45,24 @@ template<typename T>
 void __print(const T &x) {int f = 0; cout << '{'; for (auto &i: x) cout << (f++ ? "," : ""), __print(i); cout << "}";}
 
 void solve(){
+	int n,q; cin >> n >> q;
+
+vector<long> A(n); read(A);
+
+	sort(A.rbegin(), A.rend());
+
+	for(int i=1; i<n; i++){
+		A[i] += A[i - 1];
+	}
+
+	for(int i=0; i<q; i++){
+		int k; cin >> k;
+
+		auto it = lower_bound(A.begin(), A.end(), k);
+		
+		if(it == A.end()) cout << "-1" << "\n";
+		else cout << it - A.begin() + 1 << "\n";
+	}
 }
 
 int main(){

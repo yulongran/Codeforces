@@ -45,6 +45,16 @@ template<typename T>
 void __print(const T &x) {int f = 0; cout << '{'; for (auto &i: x) cout << (f++ ? "," : ""), __print(i); cout << "}";}
 
 void solve(){
+	string s; cin >> s;
+
+	int front = 0, back = 0;
+
+	for(int i=0; i<3; i++){
+		front += s[i] - '0';
+		back += s[6 - i - 1] - '0';
+	}
+	
+	cout << (front == back ? "YES" : "NO") << "\n";
 }
 
 int main(){

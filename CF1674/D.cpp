@@ -45,6 +45,18 @@ template<typename T>
 void __print(const T &x) {int f = 0; cout << '{'; for (auto &i: x) cout << (f++ ? "," : ""), __print(i); cout << "}";}
 
 void solve(){
+	int n; cin >> n;
+	vector<int> A(n); read(A);
+		
+	for(int i=n-2; i>=0; i-=2){
+		if(A[i] > A[i + 1]) swap(A[i], A[i + 1]);
+	}
+
+	if(is_sorted(A.begin(), A.end())){
+		cout << "YES\n";
+	}else{
+		cout << "NO\n";
+	}
 }
 
 int main(){

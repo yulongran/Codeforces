@@ -45,6 +45,42 @@ template<typename T>
 void __print(const T &x) {int f = 0; cout << '{'; for (auto &i: x) cout << (f++ ? "," : ""), __print(i); cout << "}";}
 
 void solve(){
+	int n, m; cin >> n >> m;
+
+	vector<vector<int>> M(n, vector<int>(m, 0));
+
+	for(int i=0; i<n; i++){
+		for(int j=0; j<m; j++){
+			cin >> M[i][j];
+		}
+	}
+
+	long long res = INT_MIN;
+
+	vector<long long> backward(n + m - 1);
+	vector<long long> forward(n + m - 1);
+
+	for(int i=0; i<n; i++){
+		for(int j=0; j<m; j++){
+			int back = i + j;
+			int front = i + (m - j - 1);
+			
+			backward[back] += M[i][j];
+			forward[front] += M[i][j];
+		}
+	}
+
+	for(int i=0; i<n; i++){
+		for(int j=0; j<m; j++){
+			int back = i + j;
+			int front = i + (m - j - 1);
+
+			res = max(res, backward[back] + forward[front] - M[i][j]);
+		}
+	}
+
+
+	cout << res << "\n";
 }
 
 int main(){

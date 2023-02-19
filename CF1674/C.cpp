@@ -45,6 +45,21 @@ template<typename T>
 void __print(const T &x) {int f = 0; cout << '{'; for (auto &i: x) cout << (f++ ? "," : ""), __print(i); cout << "}";}
 
 void solve(){
+	string a, b;
+	
+	cin >> a >> b;	
+	
+	if(b == "a"){
+		cout << 1 << "\n";
+		return;
+	}
+
+	if(b.find("a") != string::npos){
+		cout << -1 << "\n";
+		return;
+	}
+
+	cout << (long long) pow(2, a.size()) << "\n";
 }
 
 int main(){

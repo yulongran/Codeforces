@@ -45,6 +45,34 @@ template<typename T>
 void __print(const T &x) {int f = 0; cout << '{'; for (auto &i: x) cout << (f++ ? "," : ""), __print(i); cout << "}";}
 
 void solve(){
+	int n, m; cin >> n >> m;
+
+	vector<string> A;
+
+	for(int i=0; i<n; i++){
+		string s; cin >> s;
+		A.push_back(s);
+	}
+
+	int res = INT_MAX;
+
+	auto score = [](const auto& s1, const auto& s2) -> int {
+		int score = 0;
+
+		for(int i=0; i<s1.size(); i++){
+			score += abs((s1[i] - 'a') - (s2[i] - 'a'));			
+		}
+
+		return score;
+	};
+
+	for(int i=0; i<n; i++){
+		for(int j=i+1; j<n; j++){
+			res = min(res, score(A[i], A[j]));
+		}
+	}
+
+	cout << res << "\n";
 }
 
 int main(){

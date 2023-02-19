@@ -45,6 +45,15 @@ template<typename T>
 void __print(const T &x) {int f = 0; cout << '{'; for (auto &i: x) cout << (f++ ? "," : ""), __print(i); cout << "}";}
 
 void solve(){
+	int x, y;
+	cin >> x >> y;
+
+	if(x > y || y % x){
+		cout << 0 << " " <<  0 << "\n";
+		return;
+	}
+
+	cout << 1 << " " << y / x << "\n";
 }
 
 int main(){

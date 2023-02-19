@@ -44,7 +44,21 @@ void __print(const pair<T, V> &x) {cout << '{'; __print(x.first); cout << ','; _
 template<typename T>
 void __print(const T &x) {int f = 0; cout << '{'; for (auto &i: x) cout << (f++ ? "," : ""), __print(i); cout << "}";}
 
+using i64 = long long;
+
 void solve(){
+	int n; cin >> n;
+	
+	int mn = INT_MAX;
+	i64 sum = 0;
+
+	for(int i=0; i<n; i++){
+		int v; cin >> v;
+		sum += v;
+		mn = min(mn, v);
+	}
+	
+	cout << sum - mn * n << "\n";
 }
 
 int main(){
